@@ -17,10 +17,11 @@ export class App extends Component {
   };
   onSubmit = event => {
     event.preventDefault();
-    // if(this.state.images.length === 0) {
-    //   alert('Write something');
-    //   return
-    // }
+    if(event.target.elements.text.value === "") {
+      alert('Write something');
+      
+      return
+    }
     this.setState({
       query: event.target.elements.text.value,
       page: 1,
