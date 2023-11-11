@@ -29,7 +29,7 @@ export class ImageGalleryItem extends Component {
     return (
         <li className={css.item}>
   <img src={image.webformatURL} alt="" className={css.image} onClick={this.openModal}/>
-  {this.state.isModalOpen && (<Modal image={image} closeModal={this.closeModal}/>)}
+  {this.state.isModalOpen && (<Modal image={image.largeImageURL} closeModal={this.closeModal}/>)}
 </li>
     )}
 }
