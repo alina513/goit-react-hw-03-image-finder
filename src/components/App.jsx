@@ -15,20 +15,17 @@ export class App extends Component {
     error: false,
     
   };
-  onSubmit = event => {
-    event.preventDefault();
-    if(event.target.elements.text.value === "") {
-      alert('Write something');
-      
-      return
-    }
+
+  
+
+  addPhoto = value => {
     this.setState({
-      query: event.target.elements.text.value,
+      query: value,
       page: 1,
       images: [],
     });
-    event.target.reset();
   };
+
 
   onButton = () => {
     this.setState(prevState => ({
@@ -48,7 +45,7 @@ export class App extends Component {
           this.state.query,
           this.state.page
         );
-        this.setState({ images: photos });
+        this.setState(prevState => ({images: [...prevState.images, ...photos ]}));
       
     } catch (error) {
       this.setState({
@@ -71,7 +68,7 @@ export class App extends Component {
           color: '#010101',
         }}
       >
-        <Searchbar onSubmit={this.onSubmit} />
+        <Searchbar onSubmit={this.addPhoto} />
         {this.state.loading && <Loader />}
         {this.state.images.length > 0 && (
           <ImageGallery images={this.state.images}/>

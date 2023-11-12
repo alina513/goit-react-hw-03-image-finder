@@ -28,7 +28,7 @@ export class ImageGalleryItem extends Component {
         const {image} = this.props;
     return (
         <li className={css.item}>
-  <img src={image.webformatURL} alt="cat" className={css.image} onClick={this.openModal}/>
+  <img src={image.webformatURL} alt={image.tags} className={css.image} onClick={this.openModal}/>
   {this.state.isModalOpen && (<Modal image={image.largeImageURL} closeModal={this.closeModal}/>)}
 </li>
     )}
